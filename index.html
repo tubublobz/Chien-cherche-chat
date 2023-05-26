@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Journal d'amour</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #FF0000;
+        }
+
+        #message-form {
+            margin-bottom: 20px;
+        }
+
+        #message-form input[type="text"],
+        #message-form input[type="file"],
+        #message-form input[type="submit"] {
+            margin-top: 10px;
+        }
+
+        #message-board {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message {
+            margin-bottom: 20px;
+        }
+
+        .message p {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .message img {
+            max-width: 300px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Journal d'amour</h1>
+
+    <div id="message-form">
+        <form id="new-message-form">
+            <input type="text" id="message-input" placeholder="Écrivez un mot...">
+            <input type="file" id="image-input">
+            <input type="submit" value="Envoyer">
+        </form>
+    </div>
+
+    <div id="message-board"></div>
+
+    <script>
+        // Fonction pour créer une nouvelle entrée de message
+        function createMessageEntry(message, image) {
+            var messageBoard = document.getElementById("message-board");
+
+            var messageDiv = document.createElement("div");
+            messageDiv.classList.add("message");
+
+            var messageText = document.createElement("p");
+            messageText.textContent = message;
+
+            var messageImage = document.createElement("img");
+            messageImage.src = URL.createObjectURL(image);
+            messageImage.alt = "Image";
+
+            messageDiv.appendChild(messageText);
+            messageDiv.appendChild(messageImage);
+            messageBoard.appendChild(messageDiv);
+        }
+
+        // Événement de soumission du formulaire
+        document.getElementById("new-message-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            var messageInput = document.getElementById("message-input");
+            var imageInput = document.getElementById("image-input");
+
+            var message = messageInput.value;
+            var image = imageInput.files[0];
+
+            if (message && image) {
+                createMessageEntry(message, image);
+
+                // Réinitialisation des champs du formulaire
+                messageInput.value = "";
+                imageInput.value = "";
+            }
+        });
+    </script>
+</body>
+</html>
