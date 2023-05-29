@@ -13,7 +13,7 @@
 
     <script>
         // Fonction pour afficher l'image et le texte
-        function displayMessage(imageUrl, message) {
+        function displayMessage(imageUrl, message, date) {
             var messageContainer = document.getElementById("message-container");
 
             var messageDiv = document.createElement("div");
@@ -26,8 +26,12 @@
             var messageText = document.createElement("p");
             messageText.textContent = message;
             
+            var messageDate = document.createElement("p");
+            messageDate.textContent = date;
+            
             messageDiv.appendChild(messageText);
             messageDiv.appendChild(messageImage);
+            messageDiv.appendChild(messageDate);
             
             messageContainer.appendChild(messageDiv);
         }
@@ -40,7 +44,8 @@
             .then(function (data) {
                 var imageUrl = data.imageUrl;
                 var message = data.message;
-                displayMessage(imageUrl, message);
+                var date = data.date;
+                displayMessage(imageUrl, message, date);
             })
             .catch(function (error) {
                 console.log("Une erreur s'est produite : " + error);
