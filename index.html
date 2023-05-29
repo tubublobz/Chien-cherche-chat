@@ -24,6 +24,13 @@
           box-sizing: border-box;
           padding: 20px;
         }
+        
+        /* Style de l'image pour les téléphones en position verticale */
+        @media (max-width: 600px) and (orientation: portrait) {
+          .message img {
+         max-height: 70vh; /* Ajustez cette valeur selon vos besoins */
+         }
+        }
 
         /* Style de l'image */
         .message img {
