@@ -13,12 +13,24 @@
           margin-top: 20px;
         }
 
+         /* Style du conteneur */
+        .message .content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          max-height: 100vh;
+          box-sizing: border-box;
+          padding: 20px;
+        }
+
         /* Style de l'image */
         .message img {
           display: block;
           margin: 0 auto;
           max-width: 100%;
-          max-height: 80vh; /*  70vh too small on phone - Ajustez cette valeur selon vos besoins */
+          max-height: 80vh; /* Ajustez cette valeur selon vos besoins */
           width: auto;
           height: auto;
           object-fit: contain;
